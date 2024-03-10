@@ -68,8 +68,7 @@ Method: PUT
 Isımlendirme: update  
 Açıklama: Belirli bir müşterinin bilgilerini günceller.  
 Parametreler:  
-id: Müşterinin girilen id'si  
-Diğer parametreler: Güncellenecek müşteri bilgileri  
+id: Müşterinin girilen id'si   
 
 Örnek Kullanım:  
 PUT http://localhost:8080/v1/customers  
