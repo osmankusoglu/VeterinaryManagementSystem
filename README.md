@@ -1,4 +1,4 @@
-## VeterinaryManagementSystem
+## Veteriner Yönetim Sistemi
 Bu proje, katmanlı bir mimariyi takip eden, IoC ve DI kullanımı ile constructor injection'ı benimseyen, PostgreSQL ve MySQL veritabanları ile entegrasyon içeren bir Java Spring Boot uygulamasının demonstrasyonudur. Proje, entityler için CRUD operasyonlarını, istisna yönetimini ve API dokümantasyonunu içermektedir.
 
 ## Kullanılan Teknolojiler
