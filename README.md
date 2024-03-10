@@ -18,9 +18,6 @@ Entity Sınıfları
 
 DTO
 
-## Veritabanı Konfigürasyonu
-Proje, hem PostgreSQL hem de MySQL veritabanlarını destekler.
-
 ## Endpoint Yönetimi
 **1. Müşterileri Listeleme**
  URL: /v1/customers  
