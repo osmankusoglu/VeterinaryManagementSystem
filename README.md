@@ -16,7 +16,7 @@ Repository Katmanı
 
 Entity Sınıfları
 
-DTO (Veri Transfer Objesi)
+DTO
 
 ## Veritabanı Konfigürasyonu
 Proje, hem PostgreSQL hem de MySQL veritabanlarını destekler.
