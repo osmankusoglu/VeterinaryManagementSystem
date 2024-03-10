@@ -8,15 +8,15 @@ PostgreSQL
 ## Proje Yapısı
 Proje, endişelerin açık bir şekilde ayrıldığı katmanlı bir mimariyi takip eder. Ana bileşenler şunlardır:
 
-Controller Katmanı: HTTP isteklerini ele alır, girişleri doğrular ve servis katmanına iletilir.
+Controller Katmanı
 
-Servis Katmanı: İş mantığını içerir, repository ile etkileşimde bulunur ve işlemleri uygular.
+Servis Katmanı
 
-Repository Katmanı: Veritabanı işlemleri ve entity etkileşimleri için sorumludur.
+Repository Katmanı
 
-Entity Sınıfları: Veri modelini temsil eder ve entityler arasındaki ilişkileri tanımlar.
+Entity Sınıfları
 
-DTO (Veri Transfer Objesi): Katmanlar arası iletişimde ve istek-cevap formatını şekillendirmekte kullanılır.
+DTO (Veri Transfer Objesi)
 
 ## Veritabanı Konfigürasyonu
 Proje, hem PostgreSQL hem de MySQL veritabanlarını destekler.
