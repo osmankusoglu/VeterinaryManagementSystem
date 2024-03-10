@@ -2,9 +2,9 @@
 Bu proje, katmanlı bir mimariyi takip eden, IoC ve DI kullanımı ile constructor injection'ı benimseyen, PostgreSQL  veritabanı ile entegrasyon içeren bir Java Spring Boot uygulamasının demonstrasyonudur. Proje, entityler için CRUD operasyonlarını, istisna yönetimini ve API dokümantasyonunu içermektedir.
 
 ## Kullanılan Teknolojiler
-Spring Boot
-Spring Data JPA
-PostgreSQL
+Spring Boot  
+Spring Data JPA  
+PostgreSQL  
 ## Proje Yapısı
 Proje, endişelerin açık bir şekilde ayrıldığı katmanlı bir mimariyi takip eder. Ana bileşenler şunlardır:
 
