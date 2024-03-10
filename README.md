@@ -338,7 +338,7 @@ page: Sayfa numarası (Varsayılan: 0)
 pageSize: Sayfa boyutu (Varsayılan: 5)  
 
 Örnek Kullanım:  
-GET http://localhost:8080/v1/doctors?page=0&pageSize=5 - Sistemde kayıtlı tüm doktorları listeler.  
+GET http://localhost:8080/v1/doctors?page=0&pageSize=5  
 
 **2. Belirli Bir Doktoru Getirme**  
 URL: /v1/doctors/{id}  
@@ -399,7 +399,7 @@ page: Sayfa numarası (Varsayılan: 0)
 pageSize: Sayfa boyutu (Varsayılan: 5)  
   
 Örnek Kullanım:  
-GET http://localhost:8080/v1/available-dates?page=0&pageSize=5 - Doktorların müsait günlerini listeler.  
+GET http://localhost:8080/v1/available-dates?page=0&pageSize=5  
 
 **2. Belirli Bir Müsait Günü Getirme**  
 URL: /v1/available-dates/{id}  
