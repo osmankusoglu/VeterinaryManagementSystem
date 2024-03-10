@@ -26,6 +26,7 @@ public class CustomerController {
         this.modelMapper = modelMapper;
     }
 
+    //Proje isterlerine göre hayvan sahibi kaydediliyor (Question 10)
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResultData<CustomerResponse> save(@Valid @RequestBody CustomerSaveRequest customerSaveRequest) {
@@ -41,16 +42,17 @@ public class CustomerController {
         return ResultHelper.success(this.modelMapper.forResponse().map(customer, CustomerResponse.class));
     }
 
+    //Hayvan sahipleri isme göre filtreler (Question 11)
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResultData<CursorResponse<CustomerResponse>> cursor(
-            @RequestParam(name = "page",required = false,defaultValue = "0") int page,
-            @RequestParam(name = "pageSize",required = false,defaultValue = "2") int pageSize,
-            @RequestParam(name = "name",required = false,defaultValue = "") String name
-    ){
-        Page<Customer> customerPage = this.customerService.cursor(page,pageSize,name);
+            @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "2") int pageSize,
+            @RequestParam(name = "name", required = false, defaultValue = "") String name
+    ) {
+        Page<Customer> customerPage = this.customerService.cursor(page, pageSize, name);
         Page<CustomerResponse> customerResponsePage = customerPage
-                .map(customer -> this.modelMapper.forResponse().map(customer,CustomerResponse.class));
+                .map(customer -> this.modelMapper.forResponse().map(customer, CustomerResponse.class));
         return ResultHelper.cursor(customerResponsePage);
     }
 

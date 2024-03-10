@@ -17,7 +17,7 @@ import java.util.List;
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "doctor_id",columnDefinition = "serial")
+    @Column(name = "doctor_id", columnDefinition = "serial")
     private long id;
 
     @NotNull
@@ -44,9 +44,6 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private List<AvailableDate> availableDateList;
 
-
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private List<Appointment> appointmentList;
-
-
 }

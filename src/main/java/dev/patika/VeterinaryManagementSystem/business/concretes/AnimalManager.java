@@ -4,6 +4,7 @@ import dev.patika.VeterinaryManagementSystem.business.abstracts.IAnimalService;
 import dev.patika.VeterinaryManagementSystem.core.exception.NotFoundException;
 import dev.patika.VeterinaryManagementSystem.core.utilies.Msg;
 import dev.patika.VeterinaryManagementSystem.dao.AnimalRepo;
+import dev.patika.VeterinaryManagementSystem.dto.response.animal.AnimalResponse;
 import dev.patika.VeterinaryManagementSystem.entities.Animal;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,9 +19,14 @@ public class AnimalManager implements IAnimalService {
         this.animalRepo = animalRepo;
     }
 
+    //Proje isterlerine göre hayvan kaydediliyor (Question 12)
     @Override
-    public Animal save(Animal animal) {
-        return this.animalRepo.save(animal);
+    public AnimalResponse save(Animal animal) {
+        Animal savedAnimal = this.animalRepo.save(animal);
+        AnimalResponse animalResponse = new AnimalResponse((int) savedAnimal.getId(), savedAnimal.getName(), savedAnimal.getSpecies(), savedAnimal.getBreed(),
+                savedAnimal.getGender(), savedAnimal.getColor(), savedAnimal.getDateOfBirth(),
+                (int) savedAnimal.getCustomer().getId());
+        return animalResponse;
     }
 
     @Override
@@ -34,8 +40,9 @@ public class AnimalManager implements IAnimalService {
         return this.animalRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND));
     }
 
+    //Hayvanlar isme göre filtreler (Question 13)
     @Override
-    public Page<Animal> cursor(int page, int pageSize,String name) {
+    public Page<Animal> cursor(int page, int pageSize, String name) {
         Pageable pageable = PageRequest.of(page, pageSize);
         if (name.isEmpty()) {
             return this.animalRepo.findAll(pageable);
@@ -49,5 +56,12 @@ public class AnimalManager implements IAnimalService {
         Animal animal = this.get(id);
         this.animalRepo.delete(animal);
         return true;
+    }
+
+    //Girilen hayvan sahibinin sistemde kayıtlı tüm hayvanlarını görüntüleme (Question 14)
+    @Override
+    public Page<Animal> getByAllCustomerId(int page, int pageSize, Long customerId) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return this.animalRepo.getByCustomerId(customerId, pageable);
     }
 }

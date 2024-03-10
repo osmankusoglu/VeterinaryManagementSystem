@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class VaccineManager implements IVaccineService {
     private final VaccineRepo vaccineRepo;
@@ -18,6 +20,7 @@ public class VaccineManager implements IVaccineService {
         this.vaccineRepo = vaccineRepo;
     }
 
+    //Proje isterlerine göre hayvana ait aşı kaydediliyor (Question 21)
     @Override
     public Vaccine save(Vaccine vaccine) {
         return this.vaccineRepo.save(vaccine);
@@ -35,15 +38,29 @@ public class VaccineManager implements IVaccineService {
     }
 
     @Override
-    public Page<Vaccine> cursor(int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page,pageSize);
-        return this.vaccineRepo.findAll(pageable);
-    }
-
-    @Override
     public boolean delete(int id) {
         Vaccine vaccine = this.get(id);
         this.vaccineRepo.delete(vaccine);
         return true;
+    }
+
+    @Override
+    public Page<Vaccine> cursor(int page, int pageSize) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return this.vaccineRepo.findAll(pageable);
+    }
+
+    //Belirli bir hayvana ait tüm aşı kayıtları (sadece bir hayvanın tüm aşı kayıtları) listeler (Question 24)
+    @Override
+    public Page<Vaccine> getByAllAnimalId(int page, int pageSize, Long animalId) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return this.vaccineRepo.getByAnimalId(animalId, pageable);
+    }
+
+    //Hayvanların aşı kayıtları, girilen tarih aralığına göre doğru şekilde listelenir. (Question 23)
+    @Override
+    public Page<Vaccine> cursorByDateRange(int page, int pageSize, LocalDate startDate, LocalDate endDate) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return this.vaccineRepo.findByProtectionStartDateBetween(startDate, endDate, pageable);
     }
 }

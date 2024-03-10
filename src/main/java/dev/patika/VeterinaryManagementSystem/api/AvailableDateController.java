@@ -11,7 +11,6 @@ import dev.patika.VeterinaryManagementSystem.dto.request.availableDate.Available
 import dev.patika.VeterinaryManagementSystem.dto.response.CursorResponse;
 import dev.patika.VeterinaryManagementSystem.dto.response.availableDate.AvailableDateResponse;
 import dev.patika.VeterinaryManagementSystem.entities.AvailableDate;
-import dev.patika.VeterinaryManagementSystem.entities.Customer;
 import dev.patika.VeterinaryManagementSystem.entities.Doctor;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -31,6 +30,7 @@ public class AvailableDateController {
         this.doctorService = doctorService;
     }
 
+    //Proje isterlerine göre doktor müsait günü kaydediliyor (Question 16)
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResultData<AvailableDateResponse> save(@Valid @RequestBody AvailableDateSaveRequest availableDateSaveRequest) {

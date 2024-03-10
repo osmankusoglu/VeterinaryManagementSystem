@@ -18,6 +18,7 @@ public class CustomerManager implements ICustomerService {
         this.customerRepo = customerRepo;
     }
 
+    //Proje isterlerine göre hayvan sahibi kaydediliyor (Question 10)
     @Override
     public Customer save(Customer customer) {
         return this.customerRepo.save(customer);
@@ -29,6 +30,7 @@ public class CustomerManager implements ICustomerService {
         return this.customerRepo.findById(id).orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND));
     }
 
+    //Hayvan sahipleri isme göre filtreler (Question 11)
     @Override
     public Page<Customer> cursor(int page, int pageSize, String name) {
         Pageable pageable = PageRequest.of(page, pageSize);

@@ -18,6 +18,7 @@ public class AvailableDateManager implements IAvailableDateService {
         this.availableDateRepo = availableDateRepo;
     }
 
+    //Proje isterlerine göre doktor müsait günü kaydediliyor (Question 16)
     @Override
     public AvailableDate save(AvailableDate availableDate) {
         return this.availableDateRepo.save(availableDate);
@@ -36,7 +37,7 @@ public class AvailableDateManager implements IAvailableDateService {
 
     @Override
     public Page<AvailableDate> cursor(int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page,pageSize);
+        Pageable pageable = PageRequest.of(page, pageSize);
         return this.availableDateRepo.findAll(pageable);
     }
 

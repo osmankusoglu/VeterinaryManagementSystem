@@ -6,9 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface CustomerRepo extends JpaRepository<Customer,Integer> {
+public interface CustomerRepo extends JpaRepository<Customer, Integer> {
+    //Hayvan sahipleri isme göre filtreler (Question 11)
     Page<Customer> findByName(String name, Pageable pageable);
 }

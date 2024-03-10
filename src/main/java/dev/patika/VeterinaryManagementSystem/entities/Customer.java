@@ -17,7 +17,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id",columnDefinition = "serial")
+    @Column(name = "customer_id", columnDefinition = "serial")
     private long id;
 
     @NotNull
@@ -41,11 +41,8 @@ public class Customer {
     @Column(name = "customer_city")
     private String city;
 
-
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Animal> animals;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Appointment> appointmentList;
 
 }

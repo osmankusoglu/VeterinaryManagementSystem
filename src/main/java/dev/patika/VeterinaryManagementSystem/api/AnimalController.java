@@ -33,12 +33,14 @@ public class AnimalController {
         this.customerService = customerService;
     }
 
+    //Proje isterlerine göre hayvan kaydediliyor (Question 12)
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResultData<AnimalResponse> save(@Valid @RequestBody AnimalSaveRequest animalSaveRequest) {
-        Animal saveAnimal = this.modelMapper.forRequest().map(animalSaveRequest, Animal.class);
 
         Customer customer = this.customerService.get(animalSaveRequest.getCustomerId());
+        animalSaveRequest.setCustomerId(0);
+        Animal saveAnimal = this.modelMapper.forRequest().map(animalSaveRequest, Animal.class);
         saveAnimal.setCustomer(customer);
 
         this.animalService.save(saveAnimal);
@@ -60,14 +62,15 @@ public class AnimalController {
         return ResultHelper.success(this.modelMapper.forResponse().map(animal, AnimalResponse.class));
     }
 
+    //Hayvanlar isme göre filtreler (Question 13)
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResultData<CursorResponse<AnimalResponse>> cursor(
             @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "2") int pageSize,
-            @RequestParam(name = "name",required = false,defaultValue = "") String name
+            @RequestParam(name = "pageSize", required = false, defaultValue = "5    ") int pageSize,
+            @RequestParam(name = "name", required = false, defaultValue = "") String name
     ) {
-        Page<Animal> animalPage = this.animalService.cursor(page, pageSize,name);
+        Page<Animal> animalPage = this.animalService.cursor(page, pageSize, name);
         Page<AnimalResponse> animalResponsePage = animalPage
                 .map(animal -> this.modelMapper.forResponse().map(animal, AnimalResponse.class));
         return ResultHelper.cursor(animalResponsePage);
@@ -81,4 +84,17 @@ public class AnimalController {
         return ResultHelper.ok();
     }
 
+    //Girilen hayvan sahibinin sistemde kayıtlı tüm hayvanlarını görüntüleme (Question 14)
+    @GetMapping("/by-customer")
+    @ResponseStatus(HttpStatus.OK)
+    public ResultData<CursorResponse<AnimalResponse>> getByAllCustomerId(
+            @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "2") int pageSize,
+            @RequestParam(name = "customerId", required = false, defaultValue = "0") int customerId
+    ) {
+        Page<Animal> animalPage = this.animalService.getByAllCustomerId(page, pageSize, (long) customerId);
+        Page<AnimalResponse> animalResponsePage = animalPage
+                .map(animal -> this.modelMapper.forResponse().map(animal, AnimalResponse.class));
+        return ResultHelper.cursor(animalResponsePage);
+    }
 }

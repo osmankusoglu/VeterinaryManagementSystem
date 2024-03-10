@@ -16,13 +16,12 @@ import java.time.LocalDate;
 public class AvailableDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "available_date_id",columnDefinition = "serial")
+    @Column(name = "available_date_id", columnDefinition = "serial")
     private long id;
 
     @NotNull
     @Column(name = "available_date")
     private LocalDate availableDate;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", nullable = false)

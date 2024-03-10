@@ -18,6 +18,7 @@ public class DoctorManager implements IDoctorService {
         this.doctorRepo = doctorRepo;
     }
 
+    //Proje isterlerine göre doktor kaydetme (Question 15)
     @Override
     public Doctor save(Doctor doctor) {
         return this.doctorRepo.save(doctor);

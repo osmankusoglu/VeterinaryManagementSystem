@@ -7,14 +7,9 @@ import dev.patika.VeterinaryManagementSystem.core.result.ResultData;
 import dev.patika.VeterinaryManagementSystem.core.utilies.ResultHelper;
 import dev.patika.VeterinaryManagementSystem.dto.request.doctor.DoctorSaveRequest;
 import dev.patika.VeterinaryManagementSystem.dto.request.doctor.DoctorUpdateRequest;
-import dev.patika.VeterinaryManagementSystem.dto.request.vaccine.VaccineSaveRequest;
 import dev.patika.VeterinaryManagementSystem.dto.response.CursorResponse;
-import dev.patika.VeterinaryManagementSystem.dto.response.customer.CustomerResponse;
 import dev.patika.VeterinaryManagementSystem.dto.response.doctor.DoctorResponse;
-import dev.patika.VeterinaryManagementSystem.dto.response.vaccine.VaccineResponse;
-import dev.patika.VeterinaryManagementSystem.entities.Customer;
 import dev.patika.VeterinaryManagementSystem.entities.Doctor;
-import dev.patika.VeterinaryManagementSystem.entities.Vaccine;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -31,6 +26,7 @@ public class DoctorController {
         this.modelMapper = modelMapper;
     }
 
+    //Proje isterlerine göre doktor kaydetme (Question 15)
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResultData<DoctorResponse> save(@Valid @RequestBody DoctorSaveRequest doctorSaveRequest) {
@@ -57,12 +53,12 @@ public class DoctorController {
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResultData<CursorResponse<DoctorResponse>> cursor(
-            @RequestParam(name = "page",required = false,defaultValue = "0") int page,
-            @RequestParam(name = "pageSize",required = false,defaultValue = "2") int pageSize
-    ){
-        Page<Doctor> doctorPage = this.doctorService.cursor(page,pageSize);
+            @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "2") int pageSize
+    ) {
+        Page<Doctor> doctorPage = this.doctorService.cursor(page, pageSize);
         Page<DoctorResponse> doctorResponsePage = doctorPage
-                .map(doctor -> this.modelMapper.forResponse().map(doctor,DoctorResponse.class));
+                .map(doctor -> this.modelMapper.forResponse().map(doctor, DoctorResponse.class));
         return ResultHelper.cursor(doctorResponsePage);
     }
 
