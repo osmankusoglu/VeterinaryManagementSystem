@@ -23,14 +23,14 @@ Proje, hem PostgreSQL hem de MySQL veritabanlarını destekler.
 
 ## Endpoint Yönetimi
 **1. Müşterileri Listeleme**
--- URL: /v1/customers
--- Method: GET
--- Isımlendirme: cursor
--- Açıklama: Sistemde kayıtlı tüm müşterileri listeler.
--- Parametreler:
--- page: Sayfa numarası (Varsayılan: 0)
--- pageSize: Sayfa boyutu (Varsayılan: 5)
--- name: Girilen müşteri adı
+-- URL: /v1/customers  
+-- Method: GET  
+-- Isımlendirme: cursor  
+-- Açıklama: Sistemde kayıtlı tüm müşterileri listeler.  
+-- Parametreler:  
+-- page: Sayfa numarası (Varsayılan: 0  
+-- pageSize: Sayfa boyutu (Varsayılan: 5)  
+-- name: Girilen müşteri adı  
 
 Örnek Kullanım:
 GET "http://localhost:8080/v1/customers?page=0&pageSize=5" - Sistemde kayıtlı tüm müşterileri listeler.
