@@ -444,3 +444,6 @@ id: Müsait günün girilen id'si
 Örnek Kullanım:  
 DELETE http://localhost:8080/v1/available-dates/1  
 
+![customer-cursor](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/758342a3-e3b4-4e12-a45a-abb616c30d2a)
+![getByCustomerId](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/b87f8987-2ec6-4290-ba8e-59daf800caeb)
+![getByAnimalId](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/9c7086a4-ad41-4b44-b11c-e06ea3fc6054)
