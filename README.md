@@ -447,3 +447,8 @@ DELETE http://localhost:8080/v1/available-dates/1
 ![customer-cursor](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/758342a3-e3b4-4e12-a45a-abb616c30d2a)
 ![getByCustomerId](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/b87f8987-2ec6-4290-ba8e-59daf800caeb)
 ![getByAnimalId](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/9c7086a4-ad41-4b44-b11c-e06ea3fc6054)
+![cursor-doctor](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/e2240b1b-4528-4196-9e02-4336e59550d6)
+![get-doctor](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/7fcf31ba-2977-422a-9b3b-3fd98bb4704a)
+![getappo](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/f4c3e14f-a53f-495c-9ab1-6d8dc2e48b03)
+![getdateandoctor](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/767fffa2-3002-4bbd-b96c-0a140c948995)
+![getdateanimal](https://github.com/osmankusoglu/VeterinaryManagementSystem/assets/130009555/97407d97-546f-4763-bd1a-859400e486c2)
